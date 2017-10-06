@@ -10,7 +10,12 @@
  */
 public class Login extends javax.swing.JFrame {
 
-    private Usuario admin;
+    public usuarioAdmin adminUsers;
+    public Proyecto1 sys = new Proyecto1();
+    UsuarioNormal normal;
+    public int locationUser;
+    
+    
     /**
      * Creates new form Login
      */
@@ -19,15 +24,65 @@ public class Login extends javax.swing.JFrame {
         this.setTitle("Login");
         this.setLocationRelativeTo(null);
         this.pack();
+        // Asignanado objecto
+        adminUsers = new usuarioAdmin();
         
-        admin = new Usuario();
-        admin.setId("admin");
-        admin.setNombre("admin");
-        admin.setApellido("admin");
-        admin.setUser("admin");
-        admin.setPassword("admin");
-        admin.setRol("admin");
+        // No hay inicializacion de usuarios
+        sys.us[0] = new Usuario();
+        sys.us[0].setId("admin");
+        sys.us[0].setNombre("admin");
+        sys.us[0].setApellido("admin");
+        sys.us[0].setUser("admin");
+        sys.us[0].setPassword("admin");
+        sys.us[0].setRol("admin");
     }
+    
+    public Login(Proyecto1 sys) {
+        initComponents();
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
+        this.pack();
+        this.sys = sys;
+       
+        //Asignar Objecto;
+        adminUsers = new usuarioAdmin();
+        // No hay inicializacion de usuarios
+        sys.us[0] = new Usuario();
+        sys.us[0].setId("admin");
+        sys.us[0].setNombre("admin");
+        sys.us[0].setApellido("admin");
+        sys.us[0].setUser("admin");
+        sys.us[0].setPassword("admin");
+        sys.us[0].setRol("admin");
+    }
+    
+     public Login(usuarioAdmin adminUsers) {
+        initComponents();
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
+        this.pack();
+        this.adminUsers = adminUsers;
+    }
+    
+    
+    /*
+    public Login(usuarioAdmin users) {
+        initComponents();
+
+        //Usuarios
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
+        this.pack();
+
+        this.adminUsers = users;
+        us[users.x].setId("admin");
+        us[users.x].setNombre("admin");
+        us[users.x].setApellido("admin");
+        us[users.x].setUser("admin");
+        us[users.x].setPassword("admin");
+        us[users.x].setRol("admin");
+        
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +100,6 @@ public class Login extends javax.swing.JFrame {
         usuarioF = new javax.swing.JTextField();
         ingreasarB = new javax.swing.JButton();
         cancelarB = new javax.swing.JButton();
-        menuPrincipal = new javax.swing.JButton();
         passwordF = new javax.swing.JPasswordField();
         passwordShow = new javax.swing.JCheckBox();
 
@@ -82,13 +136,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        menuPrincipal.setText("Menu P");
-        menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPrincipalActionPerformed(evt);
-            }
-        });
-
         passwordShow.setText("Mostrar Contraseña");
         passwordShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,42 +148,33 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(usuarioF, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(passwordShow)
-                                    .addComponent(passwordF)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(menuPrincipal)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel2)
+                            .addComponent(usuarioF, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(passwordShow)
+                            .addComponent(passwordF))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addComponent(ingreasarB)
                         .addGap(18, 18, 18)
                         .addComponent(cancelarB)
                         .addGap(93, 93, 93)))
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(menuPrincipal)
-                        .addGap(20, 20, 20)
+                        .addGap(22, 22, 22)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(usuarioF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,7 +188,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ingreasarB)
                             .addComponent(cancelarB, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,13 +209,6 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioFActionPerformed
 
-    private void menuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalActionPerformed
-        // TODO add your handling code here:
-        Proyecto1 proyecto = new Proyecto1();
-        proyecto.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_menuPrincipalActionPerformed
-
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         // TODO add your handling code here:
         usuarioF.setText("");
@@ -192,12 +223,34 @@ public class Login extends javax.swing.JFrame {
         String pIngresado =  String.valueOf(passwordF.getPassword());
       
         //Verificando a donde ir cuando ingrese algo.
-        if(uIngresado.equals(admin.getUser()) && pIngresado.equals(admin.getPassword()) ){
-            usuarioAdmin plataformaadmin = new usuarioAdmin();
+        //if(uIngresado.equals(admin.getUser()) && pIngresado.equals(admin.getPassword()) ){
+          if(uIngresado.equals("admin") && pIngresado.equals("admin")){
+              //adminUsers.setVisible(true);
+            //usuarioAdmin plataformaadmin = new usuarioAdmin();
             this.setVisible(false);
-            plataformaadmin.setVisible(true);
+            adminUsers = new usuarioAdmin(this);
+            adminUsers.setVisible(true);
+            //plataformaadmin.setVisible(true);
         }else {
-            System.out.println("Interfase de usuario normal");
+            
+            boolean existe = false;
+            //if(Proyecto1.x > 1){
+                for(int i = 0;i < Proyecto1.x;i++){
+                    if(usuarioF.getText().equals("")){
+              //      if(Proyecto1.us[i].getUser().equals(usuarioF.getText()) && Proyecto1.us[i].getPassword().equals(passwordF.getText())){
+                        locationUser = i;
+                        System.out.println("Si existe este usuario");
+                        this.setVisible(false);
+                        normal = new UsuarioNormal(this);
+                        normal.setVisible(true);
+                        existe = true;
+                    }
+                }
+            //}
+            
+            if(!existe){
+                System.out.println("No existe su usuario porfavor registrese");
+            }
         }
     }//GEN-LAST:event_ingreasarBActionPerformed
 
@@ -253,7 +306,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton menuPrincipal;
     private javax.swing.JPasswordField passwordF;
     private javax.swing.JCheckBox passwordShow;
     private javax.swing.JTextField usuarioF;
